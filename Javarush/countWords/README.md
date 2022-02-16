@@ -1,0 +1,1 @@
+The program takes 20 words from the keyboard in a list and returns a Map in which the key is a unique word and the value is number of mentions in the list.
