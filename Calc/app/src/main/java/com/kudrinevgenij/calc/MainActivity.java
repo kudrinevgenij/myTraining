@@ -8,6 +8,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+    String operator;
+    String firstNumber;
+    boolean isNew = true;
     EditText editText;
 
     @Override
@@ -19,7 +22,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickNumber(View view) {
+        if(isNew)
+            editText.setText("");
+        isNew = false;
+
         String number = editText.getText().toString();
+
         switch (view.getId()) {
             case R.id.btn1: number = number + "1";
             break;
@@ -41,7 +49,28 @@ public class MainActivity extends AppCompatActivity {
             break;
             case R.id.btn0: number = number + "0";
             break;
+            case R.id.btnDot: number = number + ".";
+            break;
+            case R.id.btnPlusMinus: number = "-" + number;
+            break;
         }
         editText.setText(number);
+    }
+
+    public void operations(View view) {
+        isNew = true;
+
+        firstNumber = editText.getText().toString();
+
+        switch (view.getId()) {
+            case R.id.btnMinus: operator = "-";
+                break;
+            case R.id.btnPlus: operator = "+";
+                break;
+            case R.id.btnDivision: operator = "/";
+                break;
+            case R.id.btnMultiply: operator = "*";
+                break;
+        }
     }
 }
