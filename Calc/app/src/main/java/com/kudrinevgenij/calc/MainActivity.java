@@ -8,9 +8,6 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    String operator;
-    String firstNumber;
-    boolean isNew = true;
     EditText editText;
 
     @Override
@@ -18,59 +15,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editText = findViewById(R.id.editText);
-    }
+        int[] digits = new int[] {
+                R.id.btn0,
+                R.id.btn1,
+                R.id.btn2,
+                R.id.btn3,
+                R.id.btn4,
+                R.id.btn5,
+                R.id.btn6,
+                R.id.btn7,
+                R.id.btn8,
+                R.id.btn9
+        };
 
-    public void clickNumber(View view) {
-        if(isNew)
-            editText.setText("");
-        isNew = false;
-
-        String number = editText.getText().toString();
-
-        switch (view.getId()) {
-            case R.id.btn1: number = number + "1";
-            break;
-            case R.id.btn2: number = number + "2";
-            break;
-            case R.id.btn3: number = number + "3";
-            break;
-            case R.id.btn4: number = number + "4";
-            break;
-            case R.id.btn5: number = number + "5";
-            break;
-            case R.id.btn6: number = number + "6";
-            break;
-            case R.id.btn7: number = number + "7";
-            break;
-            case R.id.btn8: number = number + "8";
-            break;
-            case R.id.btn9: number = number + "9";
-            break;
-            case R.id.btn0: number = number + "0";
-            break;
-            case R.id.btnDot: number = number + ".";
-            break;
-            case R.id.btnPlusMinus: number = "-" + number;
-            break;
-        }
-        editText.setText(number);
-    }
-
-    public void operations(View view) {
-        isNew = true;
-
-        firstNumber = editText.getText().toString();
-
-        switch (view.getId()) {
-            case R.id.btnMinus: operator = "-";
-                break;
-            case R.id.btnPlus: operator = "+";
-                break;
-            case R.id.btnDivision: operator = "/";
-                break;
-            case R.id.btnMultiply: operator = "*";
-                break;
-        }
+        int[] operations = new int[] {
+                R.id.btnPlus,
+                R.id.btnMinus,
+                R.id.btnMultiply,
+                R.id.btnDivision
+        };
     }
 }
